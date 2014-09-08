@@ -5,6 +5,7 @@
  */
 
 
+import com.example.dizelrox.hooliganwarsandroid.Logic.Player;
 import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 
 import java.io.ByteArrayInputStream;
@@ -42,7 +43,7 @@ public class InteractionWithDB
 		} 
     }
 
-    public void addUser(String login, String password, Player playerForDb) throws SQLException
+    public void addUser(String login, String password, Object playerForDb) throws SQLException
     {
         try
         {
@@ -65,10 +66,11 @@ public class InteractionWithDB
             stat.executeUpdate();
             conn.close();
             
-        } catch (IOException ex)
-        {
-            Logger.getLogger(InteractionWithDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         finally
         {
             conn.close();
